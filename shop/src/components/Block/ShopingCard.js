@@ -47,7 +47,7 @@ const ShopingCard = ({ title, price, image, id, onClick }) => (
     <img className="Tesla" src={image} alt={title} />
     <h3 className="item_title">{title}</h3>
     <p className="item_price">Цена: <span>{price}</span>$</p>
-    <Button color="outlined" className="one" onClick={onClick}>Добавить в корзину</Button>
+    <Button color="primary" className="one" onClick={onClick}>Добавить в корзину</Button>
   </Card>
 );
 

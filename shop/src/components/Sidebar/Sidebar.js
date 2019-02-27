@@ -8,9 +8,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import DeleteIcon from '@material-ui/icons/Delete';
+import InboxIcon from '@material-ui/icons/Inbox'
 
 const styles = {
   list: {
@@ -38,9 +38,9 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Фильтр'].map((text, index) => (
+          {[ 'Главная', 'Фильтр'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MenuIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -49,7 +49,7 @@ class TemporaryDrawer extends React.Component {
         <List>
           {['Корзина'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <DeleteIcon /> : <DeleteIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import Sidebar from '../Sidebar/Sidebar';
+import Toolbared from '../Search/Toolbared';
 
 const styles = theme => ({
   root: {
@@ -54,26 +54,6 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  inputRoot: {
-    color: 'white',
-    width: '100%',
-  },
-
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 200,
-      },
-    },
-  },
 });
 
 function SearchAppBar(props) {
@@ -91,13 +71,7 @@ function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Поиск..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
+            <Toolbared />
           </div>
         </Toolbar>
       </AppBar>
