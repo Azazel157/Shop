@@ -6,13 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-<<<<<<< HEAD
 import Search from '../Search/Search';
 import Sidebar from './Sidebar';
-=======
-import Sidebar from '../Sidebar/Sidebar';
-import Toolbared from '../Search/Toolbared';
->>>>>>> ad19a1c93f0595b25d887da978cccbee53efe7c8
 
 const styles = theme => ({
   root: {
@@ -76,11 +71,7 @@ function Header(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-<<<<<<< HEAD
             <Search />
-=======
-            <Toolbared />
->>>>>>> ad19a1c93f0595b25d887da978cccbee53efe7c8
           </div>
         </Toolbar>
       </AppBar>

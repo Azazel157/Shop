@@ -46,11 +46,7 @@ class Sidebar extends React.Component {
         <List>
           {['Корзина'].map((text) => (
             <ListItem button key={text}>
-<<<<<<< HEAD:shop/src/components/Header/Sidebar.js
               <ListItemIcon> <DeleteIcon /> </ListItemIcon>
-=======
-              <ListItemIcon>{index % 2 === 0 ? <DeleteIcon /> : <DeleteIcon />}</ListItemIcon>
->>>>>>> ad19a1c93f0595b25d887da978cccbee53efe7c8:shop/src/components/Sidebar/Sidebar.js
               <ListItemText primary={text} />
             </ListItem>
           ))}
