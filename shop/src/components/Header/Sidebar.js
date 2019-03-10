@@ -8,22 +8,19 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import DeleteIcon from '@material-ui/icons/Delete';
+import InboxIcon from '@material-ui/icons/Inbox'
 
 const styles = {
   list: {
     width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
+  }
 };
 
-class TemporaryDrawer extends React.Component {
+class Sidebar extends React.Component {
   state = {
-    top: false,
+    left: false,
   };
 
   toggleDrawer = (side, open) => () => {
@@ -38,18 +35,18 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Фильтр'].map((text, index) => (
+          {[ 'Главная', 'Фильтр'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MenuIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['Корзина'].map((text, index) => (
+          {['Корзина'].map((text) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon> <DeleteIcon /> </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -75,8 +72,8 @@ class TemporaryDrawer extends React.Component {
   }
 }
 
-TemporaryDrawer.propTypes = {
+Sidebar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+export default withStyles(styles)(Sidebar);
