@@ -1,47 +1,56 @@
-import React from 'react';
-import InputBase from '@material-ui/core/InputBase';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const styles = theme => ({
-inputRoot: {
-    color: 'white',
-    width: '100%',
-  },
+class Search extends Component {
+  constructor(props) {
+    super(props)
+    
+    this.state={
+      value: '',
+      filterText: '',
+      itemsList: ''
+    }
+  }
 
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 200,
-      },
-    },
-  },
-})
+  handleChange (event) {
+    this.setState({
+      value: event.target.value
+    })
+    this.props.onUserInput(event.target.value)
+  }
 
-function Search(props) {
-    const { classes } = props;
-        return (
-            <div>
-                <InputBase
-                placeholder="Поиск..."
-                classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
+  handleSubmit (event) {
+    event.preventDefault()
+    this.props.serchItems(this.state.value)
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+          <input
+            type="search"
+            className="form-control"
+            value={this.props.filterText}
+            placeholder="Поиск..."
+            onChange={ (search, name) => {
+              let {itemsList} = this.state
+              itemsList[name].search = search
+              this.setState({ itemsList })
+              this.handleChange.bind(this)
             }}
-              />
+            />
+          </form>
         </div>
+      </div>
     )
+  }
 }
 
 Search.propTypes = {
-    classes: PropTypes.object.isRequired,
+  onUserInput: PropTypes.func.isRequired,
+  filterText: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(Search);
+export default Search;

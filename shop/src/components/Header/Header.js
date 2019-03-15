@@ -1,86 +1,77 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { fade } from '@material-ui/core/styles/colorManipulator';
-import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import Search from '../Search/Search';
 import Sidebar from './Sidebar';
+import styled from 'styled-components';
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-  },
+const div = styled.div `
+  .root {
+    width: '100%';
+  }
 
-  grow: {
+  .grow {
     flexGrow: 1,
-  },
+  }
 
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-
-  title: {
+  .title {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-    },
-  },
+    }
+  }
 
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+  Typography.search {
+    position: 'relative';
+    borderRadius: theme.shape.borderRadius;
+    backgroundColor: fade(theme.palette.common.white, 0.15);
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
+      backgroundColor: fade(theme.palette.common.white, 0.25);
+    }
+    marginLeft: 0;
+    width: '100%';
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit,
-      width: 'auto',
-    },
-  },
-  
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      marginLeft: theme.spacing.unit;
+      width: 'auto';
+    }
+`
 
-function Header(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Sidebar />
-          <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Магазин
-          </Typography>
-          <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+class Header extends Component {
+  constructor() {
+    super()
+    this.state = {
+      filterText: ''
+    }
+  }
+  
+  handleUserInput(searchTerm) {
+    this.setState({filterText: searchTerm});
+  }
+  
+  render() {
+    return (
+      <div className='root'>
+        <AppBar position="static">
+          <Toolbar>
+            <Sidebar />
+            <Typography className='title' variant="h6" color="inherit" noWrap>
+              Магазин
+            </Typography>
+            <div className='grow' />
+            <div className='search'>
+            <div>
+              </div>
+              <Search 
+              filterText={this.state.filterText}
+              onUserInput={this.handleUserInput.bind(this)}
+              />
             </div>
-            <Search />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Header);
+export default Header;
