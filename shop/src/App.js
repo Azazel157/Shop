@@ -25,7 +25,7 @@ class App extends React.Component{
     let itemsList = [...this.state.itemsList];
     itemsList.push(item)
     this.setState({ itemsList, isPopoverOpen: false })
-  }
+  };
 
   render() {
       return(
@@ -52,7 +52,6 @@ class App extends React.Component{
             onAdd={this.onAdd}
             />
             </Popover>
-
             <Select 
             items={this.state.itemsList}
             onChange={ (checked, idx) => {

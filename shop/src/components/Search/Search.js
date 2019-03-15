@@ -34,12 +34,7 @@ class Search extends Component {
             className="form-control"
             value={this.props.filterText}
             placeholder="Поиск..."
-            onChange={ (search, name) => {
-              let {itemsList} = this.state
-              itemsList[name].search = search
-              this.setState({ itemsList })
-              this.handleChange.bind(this)
-            }}
+            onChange={this.handleChange.bind(this)}
             />
           </form>
         </div>
