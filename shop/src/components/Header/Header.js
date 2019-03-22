@@ -5,23 +5,22 @@ import Typography from '@material-ui/core/Typography';
 import Search from '../Search/Search';
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
+import ContactList from '../Contact/ContactList';
+import PropTypes from 'prop-types';
 
 const div = styled.div `
   .root {
     width: '100%';
   }
-
   .grow {
     flexGrow: 1,
   }
-
   .title {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     }
   }
-
   Typography.search {
     position: 'relative';
     borderRadius: theme.shape.borderRadius;
@@ -40,15 +39,17 @@ const div = styled.div `
 class Header extends Component {
   constructor() {
     super()
+
     this.state = {
-      filterText: ''
+      filterText: '',
+      contacts: []
     }
   }
-  
+
   handleUserInput(searchTerm) {
     this.setState({filterText: searchTerm});
-  }
-  
+}
+
   render() {
     return (
       <div className='root'>
@@ -63,8 +64,12 @@ class Header extends Component {
             <div>
               </div>
               <Search 
-              filterText={this.state.filterText}
-              onUserInput={this.handleUserInput.bind(this)}
+                filterText={this.state.filterText}
+                onUserInput={this.handleUserInput.bind(this)}
+              />
+              <ContactList 
+                filterText={this.state.filterText}
+                contacts={this.props.contacts}
               />
             </div>
           </Toolbar>
@@ -73,5 +78,9 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default Header;

@@ -4,6 +4,7 @@ import Buttons from './components/Buttons/Buttons';
 import Select from './components/List/Select';
 import { Popover } from '@material-ui/core';
 import Form from './components/Form/Form';
+import Animation from './components/Animation/Animation';
 
 class App extends React.Component{
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends React.Component{
       ]
     }
   }
-
+  
   onAdd = (item) => {
     let itemsList = [...this.state.itemsList];
     itemsList.push(item)
@@ -60,6 +61,7 @@ class App extends React.Component{
               this.setState({ itemsList })
             }}
             />
+            <Animation />
             </div>
           </div>
       );
